@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		#submit { display: block;margin: 20px auto 10px auto; }
+		#optionsBox { width:800px; margin: 50px auto; text-align: center; padding: 10px;text-align: justify;box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);font-family: Georgia,Serif;font-size: 14px;font-style: italic;letter-spacing: 0.05em;line-height: 1.5em;margin-bottom:20px }
+		#optionsBox table tr td { text-align: left; }
+		#optionsBox table tr td:first-child { text-align: right; padding-right:10px;}
+		#optionsBox input[type='text'] { width:300px; }
+		#messages { text-align:right; display:none; color:green; font-size: 12px}
+		#tabs ul li { font-size:12px; }
+	</style>
+	<link rel="stylesheet" href="../../css/jquery-ui.min.css">
+	<script type="text/javascript" src="../../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="options.js"></script>
+	<title>Fluxbytes Chrome Customizer</title>
+</head>
+<body>
+	<div id="optionsBox">
+	<div id="messages"></div>
+		<div id="tabs">
+			<ul>
+				<li><a href="#tab1">History</a></li>
+				<li><a href="#tab2">New Tab Redirect</a></li>
+				<li><a href="#tab3">Extras</a></li>
+			</ul>
+			<div id="tab1">
+				<table>
+					<tr>
+						<td>Enable History Limiter ?</td>
+						<td><input type="checkbox" id="enableHistoryLimiter" name="enableHistoryLimiter"/></td>
+					</tr>
+					<tr>
+						<td>Number of history items to keep:</td>
+						<td><input type="text" id="historyLimitNumber" name="historyLimitNumber"/></td>
+					</tr>
+					<tr>
+						<td>Number of downloaded history items to keep:</td>
+						<td><input type="text" id="downloadLimitNumber" name="downloadLimitNumber"/></td>
+					</tr>
+				</table>		
+			</div>
+
+			<div id="tab2">
+				<table>
+					<tr>
+						<td>Enable new tab redirect ?</td>
+						<td><input type="checkbox" id="enableNewTabRedirect" name="enableNewTabRedirect"/></td>
+					</tr>
+					<tr>
+						<td>Page to redirect to:</td>
+						<td><input type="text" placeholder="http://www.google.com" id="newTabRedirectUrl" name="newTabRedirectUrl"/></td>
+					</tr>
+				</table>	
+			</div>
+
+			<div id="tab3">
+				<table>
+					<tr>
+						<td>Open new tabs at the end</td>
+						<td><input type="checkbox" id="moveTabsToTheEnd" name="moveTabsToTheEnd"/></td>
+					</tr>
+					<tr>
+						<td>Create View Image Menu Item</td>
+						<td><input type="checkbox" id="enableViewImage" name="enableViewImage"/></td>
+					</tr>
+				</table>	
+			</div>
+		</div>
+		<input type="button" id="submit" name="submit" value="Save All Changes"/>		
+	</div>
+</body>
+</html>
