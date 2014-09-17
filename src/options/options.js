@@ -21,7 +21,7 @@ function loadOptions()
 	chrome.storage.local.get(null,	function(options) {
 		$('#newTabRedirectUrl').val(options.newTabRedirectUrl == null ? "" : options.newTabRedirectUrl);
 		$('#enableHistoryLimiter').prop("checked",options.limitHistory == null ? true : options.limitHistory).trigger("change");		
-		$('#enableNewTabRedirect').prop("checked",options.redirectNewTab == null ? true : options.redirectNewTab).trigger("change");
+		$('#enableNewTabRedirect').prop("checked",options.redirectNewTab == null ? false : options.redirectNewTab).trigger("change");
 		$('#historyLimitNumber').val(options.historyLimitNumber == null ? 4 : options.historyLimitNumber);
 		$('#downloadLimitNumber').val(options.downloadHistoryLimitNumber == null ? 4 : options.downloadHistoryLimitNumber);
 		$('#moveTabsToTheEnd').prop("checked",options.redirectNewTab == null ? true : options.redirectNewTab);
@@ -39,7 +39,11 @@ function saveOptions()
 	var openNewTabsInTheEnd = $('#moveTabsToTheEnd').is(":checked");
 	var enableViewImage = $('#enableViewImage').is(":checked");
 
-	if (url.length > 0 && isValidNumber(hLimit) && isValidNumber(dLimit))
+	if (redirectNewTab && url.length <= 0)
+	{
+		displayError("Input is not valid");
+	}
+	else if (isValidNumber(hLimit) && isValidNumber(dLimit))
 	{
 		var storageObj = {};
 		storageObj["newTabRedirectUrl"] = url;

@@ -51,7 +51,14 @@ function pageVisitedEvent(item)
 {
 	if(limitHistory)
 	{
-		trimVisitedPagesHistory(historyLimitNumber);
+		if (historyLimitNumber == 0)
+		{
+			clearVisitedPagesHistory(0);
+		}
+		else
+		{
+			trimVisitedPagesHistory(historyLimitNumber);
+		}
 	}
 }
 
@@ -60,7 +67,14 @@ function fileStateChangedEvent()
 	// This will trim only the files with state 'completed'	
 	if (limitHistory)
 	{
-		trimFilesHistory(downloadHistoryLimitNumber);
+		if (downloadHistoryLimitNumber == 0)
+		{
+			clearDownloadHistory(0);
+		}
+		else
+		{
+			trimFilesHistory(downloadHistoryLimitNumber);
+		}
 	}
 }
 
@@ -114,3 +128,12 @@ function viewImage(clickInfo, tab) {
 	chrome.tabs.create({"url": clickInfo.srcUrl});
 }
 
+function clearDownloadHistory(sinceTime)
+{
+	chrome.browsingData.removeDownloads({"since":sinceTime});
+}
+
+function clearVisitedPagesHistory(sinceTime)
+{
+	chrome.browsingData.removeHistory({"since":sinceTime});
+}

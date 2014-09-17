@@ -21,6 +21,7 @@
     "history",
     "storage",
     "downloads",
-    "contextMenus"
+    "contextMenus",
+    "browsingData"
   ]
 }
